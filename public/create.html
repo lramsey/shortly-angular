@@ -1,12 +1,11 @@
 <form name="createLinkForm" ng-submit="createLink()">
-    URL: <input type="url" name="input" ng-model="text" required>
+    URL: <input type="url" name="input" ng-model="text" placeholder="http://www..." required>
     <input type='submit' value='Shorten'>
-    <span class="error" ng-show="createLinkForm.input.$error.required">
-       Required!</span>
     <span class="error" ng-show="createLinkForm.input.$error.url">
-     Not valid url!</span>
+     Not valid url!
+    </span>
     <pre>
-      <tt>text = {{text}}</tt><br/>
+      <tt>text = {{ text }}</tt><br/>
       <tt>createLinkForm.input.$valid = {{createLinkForm.input.$valid}}</tt><br/>
       <tt>createLinkForm.input.$error = {{createLinkForm.input.$error}}</tt><br/>
       <tt>createLinkForm.$valid = {{createLinkForm.$valid}}</tt><br/>
