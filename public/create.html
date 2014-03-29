@@ -1,6 +1,19 @@
-  <form name="createLinkForm" ng-submit="createLink()">
-      <input type="url" name="input" data-ng-model="url" required>
-      <input type='submit' value='Shorten'>
-  </form>
-  <img class='spinner' src='/spiffygif_46x46.gif'>
-  <div class='message'></div>
+<form name="createLinkForm" ng-submit="createLink()">
+    URL: <input type="url" name="input" ng-model="text" required>
+    <input type='submit' value='Shorten'>
+    <span class="error" ng-show="createLinkForm.input.$error.required">
+       Required!</span>
+    <span class="error" ng-show="createLinkForm.input.$error.url">
+     Not valid url!</span>
+    <pre>
+      <tt>text = {{text}}</tt><br/>
+      <tt>createLinkForm.input.$valid = {{createLinkForm.input.$valid}}</tt><br/>
+      <tt>createLinkForm.input.$error = {{createLinkForm.input.$error}}</tt><br/>
+      <tt>createLinkForm.$valid = {{createLinkForm.$valid}}</tt><br/>
+      <tt>createLinkForm.$error.required = {{!!createLinkForm.$error.required}}</tt><br/>
+      <tt>createLinkForm.$error.url = {{!!createLinkForm.$error.url}}</tt><br/>
+    </pre>
+</form>
+
+<div class='message'></div>
+<img class='spinner' src='/spiffygif_46x46.gif'>
