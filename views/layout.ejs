@@ -7,11 +7,18 @@
     <script src="/lib/angular.js"></script>
     <script src="/lib/angular-route.js"></script>
     <script src='/client/MyApp.js'></script> 
+    <script type="text/javascript" src="bower_components/angular-ui-keypress/keypress.js"></script>
   </head>
 
   <body ng-app="myapp">
-    <h1>Shortly</h1>
-    <ng-view></ng-view>
-    <%- body -%>
+    <div class='navigation'>
+      <ul>
+        <li><a href='#/' class='index'>All Links</a></li>
+        <li><a href='#/create' class='create'>Shorten</a></li>
+      </ul>
+      <a href='#/logout' class='logout'>Logout</a>
+    </div>
+    <div id='container'></div>
+    <div ng-view></div>
   </body>
 </html>
