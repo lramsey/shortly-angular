@@ -1,5 +1,6 @@
+<input ng-model="searchText" placeholder="Search for keywords">
 <ul>
-  <li  ng-repeat="link in links">
+  <li ng-repeat="link in links | orderBy:link.visits | filter:searchText">
     <img src='/redirect_icon.png'/>
     <div class='info'>
       <div class='visits'><span class='count'>{{ link.visits }}</span>Visits</div>

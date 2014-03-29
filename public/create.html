@@ -1,5 +1,5 @@
-  <form ng-submit="createLink()" ng-controller="createLinkController">
-      <input class='text' type='text' name='url'>
+  <form name="createLinkForm" ng-submit="createLink()">
+      <input type="url" name="input" data-ng-model="url" required>
       <input type='submit' value='Shorten'>
   </form>
   <img class='spinner' src='/spiffygif_46x46.gif'>

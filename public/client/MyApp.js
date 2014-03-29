@@ -30,6 +30,9 @@ app.controller('linkController', function($scope, $http){
 
 app.controller('createLinkController', function($scope, $http){
   $scope.createLink = function(){
-    console.log('submitted');
+    debugger;
+    var data = {url:$scope.url};
+    console.log(createLinkForm.$invalid, $scope, data);
+    $http.post('links', data);
   };
 });
