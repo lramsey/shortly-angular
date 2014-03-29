@@ -7,7 +7,7 @@ app.config(['$routeProvider', function($routeProvider){
   $routeProvider
   .when('/', {
     templateUrl: "links.html",
-    controller:'linkController'
+    controller:'linksController'
   })
   .when('/create', {
     templateUrl:'create.html',
@@ -19,7 +19,7 @@ app.config(['$routeProvider', function($routeProvider){
 /******************************************************************/
 /* CONTROLLER                                                     */
 /******************************************************************/
-app.controller('linkController', function($scope, $http){
+app.controller('linksController', function($scope, $http){
   $scope.sortParam = 'visits';
   $scope.createdAtSort = function(){
     $scope.sortParam = 'createdAt';
@@ -42,11 +42,19 @@ app.controller('linkController', function($scope, $http){
   });
 });
 
-app.controller('createLinkController', function($scope, $http){
+app.controller('createLinkController', function($scope, $http, $location){
   $scope.createLink = function(){
-    console.log($scope.input.$valid);
-    // /^(?!mailto:)(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))|localhost)(?::\d{2,5})?(?:\/[^\s]*)?$/
-    var data = {url:$scope.url};
+    var data = {url:$scope.text};
     $http.post('links', data);
+    $scope.message = $scope.text + ' has been submitted';
+    $scope.text = '';
+    //$location.path('/');
+  };
+});
+
+app.controller('linkController', function($scope, $http, $location){
+  $scope.addVisit = function(){
+    $scope.link.visits = (!$scope.link.visits)? 1 : $scope.link.visits + 1 ;
+    $http.post('links', $scope.link);
   };
 });
