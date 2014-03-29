@@ -20,6 +20,20 @@ app.config(['$routeProvider', function($routeProvider){
 /* CONTROLLER                                                     */
 /******************************************************************/
 app.controller('linkController', function($scope, $http){
+  $scope.sortParam = 'visits';
+  $scope.createdAtSort = function(){
+    $scope.sortParam = 'createdAt';
+    console.log($scope.sortParam);
+  };
+
+  $scope.visitsSort = function(){
+    $scope.sortParam = 'visits';
+  };
+
+  $scope.titleSort = function(){
+    $scope.sortParam = 'title';
+  };
+
   $http({
     method:'GET',
     url:'links'

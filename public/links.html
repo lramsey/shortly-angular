@@ -1,6 +1,10 @@
 <input ng-model="searchText" placeholder="Search for keywords">
 <ul>
-  <li ng-repeat="link in links | orderBy:link.visits | filter:searchText">
+
+  <button ng-click="createdAtSort()">created at</button>
+  <button ng-click="titleSort()">title</button>
+  <button ng-click="visitsSort()">visit</button>
+  <li ng-repeat="link in links | orderBy:sortParam | filter:searchText" class="link">
     <img src='/redirect_icon.png'/>
     <div class='info'>
       <div class='visits'><span class='count'>{{ link.visits }}</span>Visits</div>
