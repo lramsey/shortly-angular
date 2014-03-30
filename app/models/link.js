@@ -13,13 +13,13 @@ var linkSchema = mongoose.Schema({
   updatedAt: { type: Date, default: Date.now }
 },{ autoIndex: false });
 
-linkSchema.pre('save', function(done){
-  this.updatedAt = Date.now();
-  var shasum = crypto.createHash('sha1');
-  var url = (Array.isArray(this.url))? this.url[0] : this.url;
-  shasum.update(url);
-  this.code = shasum.digest('hex').slice(0,5);
-  done();
-});
+// linkSchema.pre('save', function(done){
+//   this.updatedAt = Date.now();
+//   var shasum = crypto.createHash('sha1');
+//   var url = (Array.isArray(this.url))? this.url[0] : this.url;
+//   shasum.update(url);
+//   this.code = shasum.digest('hex').slice(0,5);
+//   done();
+// });
 
 exports.Link = mongoose.model('Urls', linkSchema);
